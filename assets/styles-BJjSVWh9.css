@@ -1,0 +1,191 @@
+:root {
+  --dark-color: #272822;
+  --medium-color: #373833;
+  --light-color: #484944;
+}
+html,
+body {
+  background: var(--dark-color);
+  margin: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+#cvs.pixelated {
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+.horizontal-split {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: repeating-conic-gradient(
+      var(--dark-color) 0% 25%,
+      var(--light-color) 0% 50%
+    )
+    50%/60px 60px; /* https://css-tricks.com/background-patterns-simplified-by-conic-gradients/#checkerboard */
+}
+.vertical-split {
+  display: flex;
+  height: 100%;
+}
+.vertical-split > *:not(:nth-child(1)) {
+  flex: 1;
+}
+.vertical-split > *:nth-child(1) {
+  width: 50%;
+  resize: horizontal;
+  overflow: hidden;
+}
+.tabbed-interface {
+  display: flex;
+  flex-direction: column;
+}
+.tab-content {
+  flex: 1;
+}
+.tab-bar {
+  background-color: #484944;
+  grid-row: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+.tab-btn:hover {
+  background-color: #373833;
+}
+.tab-btn.selected.selected {
+  background-color: #282923;
+}
+.tab-btn.selected:hover {
+}
+.hidden {
+  display: none !important;
+}
+.editor {
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+#code {
+  height: 20em;
+  flex-basis: 100%;
+  font-family: monospace;
+}
+#controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.7);
+}
+#controls > * {
+  flex-grow: 1;
+}
+#log {
+  margin: 0;
+  flex-basis: 100%;
+}
+#log:not(:empty) {
+  /* border: 1px solid red; */
+  margin: 1em 0;
+  padding: 0.5em;
+}
+a {
+  color: #88f;
+}
+footer {
+  text-align: center;
+}
+
+.button {
+  border: 1px solid black;
+  background: linear-gradient(to bottom, var(--light-color), var(--dark-color));
+  border-radius: 2px;
+  margin: 0.1em;
+  padding: 0.5em 1em;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 1em;
+}
+.button[disabled] {
+  color: #666;
+}
+.button:active {
+  background: linear-gradient(to bottom, var(--dark-color), var(--light-color));
+}
+
+body.text {
+  padding: 1em;
+  max-width: 76ch;
+  margin: 0 auto;
+}
+
+#output {
+  position: relative;
+  flex-grow: 1;
+}
+
+#zoom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#output footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.1em;
+  display: flex;
+  flex-direction: column;
+}
+
+/* pinch zoom stuff */
+pinch-zoom {
+  display: block;
+  overflow: hidden;
+  touch-action: none;
+  --scale: 1;
+  --x: 0;
+  --y: 0;
+}
+
+pinch-zoom > * {
+  transform: translate(var(--x), var(--y)) scale(var(--scale));
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.rainbowtext {
+  background: radial-gradient(
+    hsl(0deg 100% 50%),
+    hsl(60deg 100% 50%),
+    hsl(120deg 100% 50%),
+    hsl(180deg 100% 50%),
+    hsl(240deg 100% 50%),
+    hsl(360deg 100% 50%)
+  );
+  background-clip: text;
+  color: transparent;
+}

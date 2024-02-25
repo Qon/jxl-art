@@ -1,0 +1,16 @@
+{
+  "short_name": "JXL Art",
+  "name": "JXL Art",
+  "description": "Renders JXL Art",
+  "icons": [
+    {
+      "src": "assets/logo-BoiSh0TC.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#ddd",
+  "display": "standalone",
+  "theme_color": "#222"
+}
